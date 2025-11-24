@@ -335,7 +335,7 @@ function createInputGroup(label, id, obtainedValue, totalValue, onChange) {
 
 function getGpa(w){
     if(w >= 86){
-        return 4;
+        return 4.00;
     }else if(w >= 82){
         return 3.67;
     }else if(w >= 78){
@@ -372,7 +372,7 @@ function calculateGpa(){
             sum = course.mid1_o + course.mid2_o + course.quiz_assign_o + course.final_o;
             courseGpa = getGpa(sum);
         }else{
-            sum = course.mid1_o + course.mid2_o + course.quiz_assign_o + course.final_o;
+            sum = course.mid1_o + course.quiz_assign_o + course.final_o;
             courseGpa = getGpa(sum);
         }
         total_gpa_sum += courseGpa*course.credit;
