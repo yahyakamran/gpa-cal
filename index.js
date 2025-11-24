@@ -407,6 +407,7 @@ function updateForm(){
     while(formContainer.firstChild){
         formContainer.removeChild(formContainer.firstChild);
     }
+    let courseLen = 0;
     CurrentCourse.forEach(course => {
         const div = document.createElement("div");
         div.classList.add("course-form");
@@ -415,10 +416,11 @@ function updateForm(){
         div.appendChild(header);
         const removeBtn = document.createElement("button");
         removeBtn.textContent = "Remove Course";
-        removeBtn.prop = CurrentCourse.length - 1;
+        removeBtn.prop = courseLen;
+        courseLen++;
         removeBtn.classList.add("remove-btn");
         removeBtn.addEventListener('click', (e) => {
-            CurrentCourse = CurrentCourse.splice(e.target.prop, e.target.prop);
+            CurrentCourse.splice(e.target.prop, 1);
             updateForm();
         });
         div.appendChild(removeBtn);
