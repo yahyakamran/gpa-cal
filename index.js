@@ -488,7 +488,7 @@ function updateForm(){
             form.appendChild(mid1Group);
 
             const quizGroup = createInputGroup(
-                "Quiz/Assignment:",
+                "Quiz/Assignment/Project:",
                 `quiz-${course.number}`,
                 course.quiz_assign_o,
                 course.quiz_assign_t,
@@ -549,14 +549,18 @@ function updateListener(){
                         final_t: 50
                     }
                 }else{
+                    let total = 25;
+                    if(course.name === "Programming Fundamentals Lab"){
+                        total = 20;
+                    }
                     obj = {
                         name: course.name,
                         number: course.number,
                         credit: course.credit,
                         mid1_o: 0,
-                        mid1_t: 25,
+                        mid1_t: total,
                         quiz_assign_o: 0,
-                        quiz_assign_t: 25,
+                        quiz_assign_t: 50 - total,
                         final_o: 0,
                         final_t: 50
                     }
