@@ -87,7 +87,6 @@ const Courses = [
   { name: "Engineering Drawing Lab", number: "ME1001", credit: 1 },
 
   { name: "English Language Skills", number: "SS1005", credit: 3 },
-  { name: "Islamic Studies / Ethics", number: "SS1007", credit: 2 },
   { name: "Occupational Health and Safety", number: "MG1008", credit: 1 },
   { name: "Pakistan Studies", number: "SS1003", credit: 2 },
 
