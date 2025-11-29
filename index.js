@@ -267,8 +267,13 @@ const Courses = [
 CurrentCourse = [];
 let GPA = -1;
 
-function searchCourse(input, item){
-    const str = (item.name).toLowerCase();
+function searchCourse(input, item, byname){
+    let str;
+    if(byname){
+        str = (item.name).toLowerCase();
+    }else{
+        str = (item.number).toLowerCase();
+    }
     const query = input.toLowerCase();
     let lastSearched = -1;
 
@@ -608,6 +613,15 @@ searchBtn.addEventListener('click', ()=>{
         searchContainer.removeChild(searchContainer.firstChild);
     }
     const table = document.createElement("table");
+    let stypes = document.getElementsByName("stype");
+    let sbyname = 1;
+    for(let i=0; i<stypes.length; ++i){
+        if(stypes[i].checked){
+            if(stypes[i].value == "bycode"){
+                sbyname = 0;
+            }
+        }
+    }
 
     // Table Header
     const thead = document.createElement("thead");
@@ -625,7 +639,7 @@ searchBtn.addEventListener('click', ()=>{
 
     const tbody = document.createElement("tbody");
     for(let i=0; i < Courses.length; i++){
-        if(searchCourse(name, Courses[i])){
+        if(searchCourse(name, Courses[i], sbyname)){
             const row = document.createElement("tr");
             Object.values(Courses[i]).forEach(value => {
                 const td = document.createElement("td");

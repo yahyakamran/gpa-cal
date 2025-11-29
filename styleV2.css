@@ -90,6 +90,45 @@ h2 {
     background: #0056b3;
 }
 
+/* Radio Button Container */
+#SearchCourse > div:first-of-type {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+}
+
+/* Radio Button Styles */
+input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    cursor: pointer;
+    accent-color: #007bff;
+    vertical-align: middle;
+}
+
+input[type="radio"]:hover {
+    opacity: 0.8;
+}
+
+/* Radio Button Labels */
+input[type="radio"] + label {
+    font-size: 15px;
+    color: #333;
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+/* Radio Button Wrapper */
+#SearchCourse > div:first-of-type label {
+    display: inline-block;
+    padding: 5px 0;
+}
+
 /* Results Section */
 #result {
     margin-top: 15px;
@@ -372,6 +411,19 @@ table tbody tr:hover {
         width: 100%;
         margin-left: 0;
         padding: 12px;
+    }
+    
+    #SearchCourse > div:first-of-type {
+        padding: 10px;
+    }
+    
+    input[type="radio"] {
+        width: 16px;
+        height: 16px;
+    }
+    
+    input[type="radio"] + label {
+        font-size: 14px;
     }
 
     #rules {

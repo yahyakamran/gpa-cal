@@ -7,8 +7,14 @@
     <body>
         <center><h1>GPA Calculator</h1></center>
         <div id="SearchCourse">
-            <input type="text"/>
+            <input type="text" placeholder="Enter Course Name or Course Code"/>
             <button id="search-btn">Search</button>
+            <div>
+                <input type="radio" id="byname" name="stype" value="byname">
+                <label for="byname">By course name</label><br>
+                <input type="radio" id="bycode" name="stype" value="bycode">
+                <label for="bycode">By course code</label><br>
+            </div>
             <div id="result"></div>
         </div>
         <center><h1>Enter Data</h1></center>
