@@ -366,13 +366,18 @@ function calculateGpa(){
     CurrentCourse.forEach(function(course, index){
         total_credit += course.credit;
         let sum = 0;
+        let ttal = 0;
         let courseGpa;
         if(course.credit > 1){
-            sum = course.mid1_o + course.mid2_o + course.quiz_assign_o + course.final_o;
-            courseGpa = getGpa(sum);
+            sum = course.mid1_o + course.mid2_o + course.quiz_assign_o + course.final_o + course.extra_o;
+            ttal = course.mid1_t + course.mid2_t + course.quiz_assign_t + course.final_t + course.extra_t;
+            let weigth = (sum/ttal)*100;
+            courseGpa = getGpa(weigth);
         }else{
-            sum = course.mid1_o + course.quiz_assign_o + course.final_o;
-            courseGpa = getGpa(sum);
+            sum = course.mid1_o + course.quiz_assign_o + course.final_o + course.extra_o;
+            ttal = course.mid1_t + course.quiz_assign_t + course.final_t + course.extra_t;
+            let weigth = (sum/ttal)*100;
+            courseGpa = getGpa(weigth);
         }
         total_gpa_sum += courseGpa*course.credit;
     })
@@ -474,6 +479,18 @@ function updateForm(){
                 }
             );
             form.appendChild(finalGroup);
+
+            const extraGroup = createInputGroup(
+                "Extra: ",
+                `extra-${course.number}`,
+                course.extra_o,
+                course.extra_t,
+                (obtained, total) => {
+                    course.extra_o = parseFloat(obtained) || 0;
+                    course.extra_t = parseFloat(total) || 0;
+                }
+            );
+            form.appendChild(extraGroup);
         } else {
             // Lab
             const mid1Group = createInputGroup(
@@ -511,6 +528,18 @@ function updateForm(){
                 }
             );
             form.appendChild(finalGroup);
+
+            const extraGroup = createInputGroup(
+                "Extra: ",
+                `extra-${course.number}`,
+                course.extra_o,
+                course.extra_t,
+                (obtained, total) => {
+                    course.extra_o = parseFloat(obtained) || 0;
+                    course.extra_t = parseFloat(total) || 0;
+                }
+            );
+            form.appendChild(extraGroup);
         }
         div.appendChild(form);
         formContainer.appendChild(div);
@@ -541,29 +570,29 @@ function updateListener(){
                         number: course.number,
                         credit: course.credit,
                         mid1_o: 0,
-                        mid1_t: 15,
+                        mid1_t: 0,
                         mid2_o: 0,
-                        mid2_t: 15,
+                        mid2_t: 0,
                         quiz_assign_o: 0,
-                        quiz_assign_t: 20,
+                        quiz_assign_t: 0,
                         final_o: 0,
-                        final_t: 50
+                        final_t: 0,
+                        extra_o: 0,
+                        extra_t: 0
                     }
                 }else{
-                    let total = 25;
-                    if(course.name === "Programming Fundamentals Lab"){
-                        total = 20;
-                    }
                     obj = {
                         name: course.name,
                         number: course.number,
                         credit: course.credit,
                         mid1_o: 0,
-                        mid1_t: total,
+                        mid1_t: 0,
                         quiz_assign_o: 0,
-                        quiz_assign_t: 50 - total,
+                        quiz_assign_t: 0,
                         final_o: 0,
-                        final_t: 50
+                        final_t: 0,
+                        extra_o: 0,
+                        extra_t: 0
                     }
                 }
                 CurrentCourse.push(obj);
